@@ -1,0 +1,31 @@
+{
+  "name": "autonomous-hackathon-agent",
+  "version": "2.0.0",
+  "description": "Universal Autonomous Hackathon Agent — cross-platform (Electron + Capacitor) with zero-cost AI inference",
+  "main": "desktop/main.js",
+  "scripts": {
+    "dev:desktop": "electron desktop/main.js",
+    "build:desktop": "electron-builder",
+    "cap:init": "cap init Hack2Find com.yourcompany.hack2find",
+    "cap:add:android": "cap add android",
+    "cap:add:ios": "cap add ios",
+    "build": "npm run build:desktop"
+  },
+  "author": "karun99",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/ios": "^6.1.2"
+  },
+  "build": {
+    "appId": "com.yourcompany.hack2find",
+    "productName": "Hack2Find",
+    "files": ["desktop/**/*", "frontend/**/*"]
+  }
+}

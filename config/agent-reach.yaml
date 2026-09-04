@@ -1,0 +1,16 @@
+# Agent-Reach configuration template
+# Copy to ~/.agent-reach/config.yaml and populate with your session cookies.
+# Never commit real cookies.
+
+twitter:
+  cookie: "auth_token=xxxx; ct0=xxxx"
+
+reddit:
+  cookie: "reddit_session=xxxx"
+
+# Optional: more platforms supported by agent-reach (add as needed)
+# youtube:
+#   cookie: "..."
+
+# github:
+#   token: "ghp_xxxx"
