@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "autonomous-hackathon-agent": {
+      "command": "node",
+      "args": [
+        "mcp-server/server.mjs"
+      ]
+    }
+  }
+}
