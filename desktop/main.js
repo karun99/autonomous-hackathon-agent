@@ -1,17 +1,11 @@
 const { app, BrowserWindow } = require("electron");
-const path = require("path");
+const { buildWindowOptions, resolveEntry } = require("./launch-config");
 
 function createWindow() {
-  const win = new BrowserWindow({
-    width: 1280,
-    height: 800,
-    webPreferences: {
-      contextIsolation: true,
-    },
-  });
+  const win = new BrowserWindow(buildWindowOptions());
 
   // Serve the local Hack2Find frontend (dev) or the packaged SPA.
-  win.loadFile(path.join(__dirname, "..", "frontend", "index.html"));
+  win.loadFile(resolveEntry());
 }
 
 app.whenReady().then(createWindow);

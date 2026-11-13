@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test and lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # The unit suite only touches desktop/launch-config.js and the manifest,
+      # so it runs without installing Electron (a ~100 MB download).
+      - name: Syntax check
+        run: node --check desktop/main.js && node --check desktop/launch-config.js
+      - name: Unit tests
+        run: node --test "test/*.test.js"
